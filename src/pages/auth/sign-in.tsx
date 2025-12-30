@@ -2,9 +2,20 @@ import { GoogleIcon } from "@/assets/icons/google-icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useSignIn } from "./hooks/use-sign-in";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function SignIn() {
   const { handleGoogleSignIn } = useSignIn();
+  const savedUser = localStorage.getItem("@app:user");
+  const user = savedUser ? JSON.parse(savedUser) : null;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/chat");
+    }
+  }, [user, navigate]);
 
   return (
     <div className="w-full grid grid-cols-1 lg:grid-cols-2 h-screen">

@@ -47,7 +47,7 @@ export function Sidebar({
     <div
       ref={sidebarRef}
       className={cn(
-        "w-full fixed shadow-xl transition-all lg:shadow-none flex max-w-80 h-screen bg-white lg:bg-transparent z-100 lg:z-auto lg:sticky top-0",
+        "w-full fixed shadow-xl transition-all lg:shadow-none flex max-w-84 h-screen dark:bg-background bg-white lg:bg-transparent z-100 lg:z-auto lg:sticky top-0",
         isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}
     >

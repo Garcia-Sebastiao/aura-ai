@@ -13,12 +13,12 @@ export function App() {
   const user = savedUser ? JSON.parse(savedUser) : null;
   const navigate = useNavigate();
 
+  console.log(user);
+
   useEffect(() => {
     initialize();
     if (!user) {
       navigate("/");
-    } else {
-      navigate("/chat");
     }
 
     return () => initialize();
