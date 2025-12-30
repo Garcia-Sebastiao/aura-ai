@@ -7,7 +7,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ConfirmDialog } from "@/components/shared/modal/confirm-modal";
 import { limitStringWithDots } from "@/utils/limitStringsWithDots";
 
-export function ChatList() {
+export function ChatList({ onClose }: { onClose: () => void }) {
   const { user } = useAuthStore();
   const [chats, setChats] = useState<ChatProps[]>([]);
   const [loading, setLoading] = useState(true);
@@ -58,6 +58,9 @@ export function ChatList() {
     <div className="w-full flex flex-col gap-y-2">
       {chats?.map((chat) => (
         <Link
+          onClick={() => {
+            onClose();
+          }}
           to={`/chat/${chat?.id}`}
           key={chat?.id}
           className="w-full relative flex items-center gap-x-3 p-3 rounded-xl  dark:hover:bg-white/10 hover:bg-primary/5 transition-all cursor-pointer group text-left dark:border-0 border border-transparent dark:hover:border-0 hover:border-primary/10 group"
@@ -68,7 +71,7 @@ export function ChatList() {
 
           <div className="flex-1 overflow-hidden">
             <p className="text-sm font-medium dark:text-white text-gray-700 truncate group-hover:text-primary transition-colors">
-              {limitStringWithDots(chat.title, 20)|| "Conversa sem título"}
+              {limitStringWithDots(chat.title, 20) || "Conversa sem título"}
             </p>
 
             <div className="flex items-center gap-x-1 text-[10px] dark:text-white/60 text-gray-400 mt-1">
@@ -86,6 +89,7 @@ export function ChatList() {
           <button className="absolute transition-all cursor-pointer hover:brightness-90 bottom-2 opacity-0 group-hover:opacity-100 right-2">
             <TrashIcon
               onClick={(e) => {
+                onClose();
                 e.preventDefault();
                 e.stopPropagation();
                 setChatToDelete(chat?.id);

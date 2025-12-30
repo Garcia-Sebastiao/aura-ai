@@ -35,14 +35,16 @@ export function ChatBody() {
     >
       <div
         className={cn(
-          "overflow-y-auto duration-700 transition-all px-4 custom-scrollbar",
-          messages?.length === 0 ? "items-center flex flex-col" : "flex-1"
+          "overflow-y-auto duration-700 transition-all lg:px-4 custom-scrollbar",
+          messages?.length === 0
+            ? "items-center flex flex-col flex-1 lg:flex-none"
+            : "flex-1"
         )}
       >
         <div className="max-w-4xl mx-auto w-full">
-          {messages.length === 0 ? (
+          {messages.length === 0 && !chatId ? (
             <div className="h-full flex flex-col items-center">
-              <h1 className="text-5xl text-center pb-6 text-gray-400 max-w-3xl leading-tight">
+              <h1 className="text-2xl pt-40 lg:pt-0 lg:text-5xl text-center pb-6 text-gray-400 max-w-3xl leading-normal lg:leading-tight">
                 Olá{" "}
                 <span className="text-primary font-medium">
                   {user?.name?.split(" ")[0]}
@@ -56,7 +58,7 @@ export function ChatBody() {
         </div>
       </div>
 
-      <div className="p-6 dark:from-transparent dark:via-transparent bg-linear-to-t from-white via-white to-transparent">
+      <div className="lg:p-6 dark:from-transparent dark:via-transparent bg-linear-to-t from-white via-white to-transparent">
         <div className="max-w-4xl mx-auto w-full">
           <ChatInput
             setIsTyping={setIsTyping}

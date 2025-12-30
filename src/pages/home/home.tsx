@@ -1,19 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Sidebar } from "./components/sidebar/sidebar";
-import { ShareIcon, SparklesIcon } from "lucide-react";
+import { MenuIcon, ShareIcon, SparklesIcon } from "lucide-react";
 import { ChatBody } from "./components/chat/chat";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function Home() {
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   return (
     <div className="w-full relative min-h-screen flex">
-      <Sidebar />
+      <Sidebar onClose={() => setIsOpen(false)} isOpen={isOpen} />
 
-      <div className="flex flex-col relative h-screen flex-1 py-6 gap-y-6 px-8">
+      <div className="flex flex-col relative h-screen flex-1 py-6 gap-y-6 px-4 lg:px-8">
         <header className="w-full sticky flex items-center justify-between">
           <div className="flex items-center gap-x-2">
-            <h4 className="font-semibold text-xl dark:text-white text-gray-400">AuraChat</h4>
+            <button
+              className="lg:hidden"
+              onClick={() => setIsOpen((value) => !value)}
+            >
+              <MenuIcon className="w-6 h-6" />
+            </button>
+            <h4 className="font-semibold text-xl dark:text-white text-gray-400">
+              AuraChat
+            </h4>
             <span className="py-1 px-3 text-sm border border-border rounded-md">
               Plus
             </span>
@@ -30,7 +40,7 @@ export function Home() {
 
             <Button
               variant="ghost"
-              className="py-3! px-4! h-9 [&>svg]:size-4!  border border-border font-medium rounded-lg"
+              className="py-3! hidden lg:flex px-4! h-9 [&>svg]:size-4!  border border-border font-medium rounded-lg"
             >
               <ShareIcon className="w-4 h-4" />
               Partilhar

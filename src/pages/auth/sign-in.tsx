@@ -7,8 +7,8 @@ export function SignIn() {
   const { handleGoogleSignIn } = useSignIn();
 
   return (
-    <div className="w-full grid grid-cols-2 h-screen">
-      <div className="col-span-1  flex-col flex justify-center items-center h-full">
+    <div className="w-full grid grid-cols-1 lg:grid-cols-2 h-screen">
+      <div className="col-span-1 px-6 flex-col flex justify-center items-center h-full">
         <div className="w-full max-w-lg flex flex-col gap-y-6 items-start">
           <h4 className="text-3xl font-semibold ">Iniciar Sessão</h4>
 
@@ -19,12 +19,17 @@ export function SignIn() {
               </label>
 
               <Input
+                disabled
+                readOnly
                 className="h-13 text-base! rounded-lg placeholder:text-base shadow-none"
                 placeholder="Digite o seu email"
               />
             </div>
 
-            <Button className="w-full h-13 hover:brightness-90 cursor-pointer text-base font-medium rounded-lg">
+            <Button
+              disabled
+              className="w-full h-13 hover:brightness-90 cursor-pointer text-base font-medium rounded-lg"
+            >
               Continuar
             </Button>
           </form>
@@ -48,7 +53,7 @@ export function SignIn() {
         </div>
       </div>
 
-      <div className="col-span-1 flex items-center justify-center overflow-hidden relative h-full bg-gray-50  dark:bg-secondary-background dark:border-l-0 border-l-gray-100 border-l-3">
+      <div className="hidden col-span-1 lg:flex items-center justify-center overflow-hidden relative h-full bg-gray-50  dark:bg-secondary-background dark:border-l-0 border-l-gray-100 border-l-3">
         <div className="w-96 h-96 -top-56 absolute -left-20 rounded-full border-3 dark:border-gray-50/10 border-gray-200" />
         <div className="w-96 h-96 -top-64 absolute left-0 rounded-full border-3 border-primary" />
         <div className="w-80 h-80 -top-56 absolute left-16 rounded-full border-3 border-primary" />

@@ -44,10 +44,10 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
                 <Avatar
                   name={user?.name as string}
                   src={user?.avatar}
-                  className="w-8 h-8"
+                  className="w-8 h-8 hidden lg:block"
                 />
               ) : (
-                <img src="/logo.png" className="w-8 h-8" alt="Aura Ai" />
+                <img src="/logo.png" className="w-8 h-8 hidden lg:block" alt="Aura Ai" />
               )}
 
               <div

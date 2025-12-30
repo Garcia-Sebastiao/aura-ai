@@ -11,12 +11,15 @@ export function useSignIn() {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      await syncUser({
+      const userData = {
         id: user.uid,
         name: user.displayName || "Usuário",
         email: user.email || "",
         avatar: user.photoURL || "",
-      });
+      };
+
+      await syncUser(userData);
+      localStorage.setItem("@app:user", JSON.stringify(userData));
 
       navigate("/chat");
     } catch (error) {
