@@ -96,7 +96,7 @@ Atualmente Analista Desenvolvedor na TIS (Angola), com foco em:
 - [x] Engenharia de produto e UX
 
 ### Links
-LinkedIn: https://www.linkedin.com/in/garciasebastiao
+LinkedIn: https://www.linkedin.com/in/garcia-sebastiao
 GitHub: https://github.com/garcia-sebastiao
 
 ### Licença
