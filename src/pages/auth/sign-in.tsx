@@ -31,14 +31,14 @@ export function SignIn() {
 
           <div className="flex items-center gap-x-6 w-full">
             <div className="flex-1 h-px bg-border" />
-            <span className="text-black/50">Ou</span>
+            <span className="dark:text-white/60 text-black/50">Ou</span>
             <div className="flex-1 h-px bg-border" />
           </div>
 
           <Button
             onClick={handleGoogleSignIn}
             variant={"ghost"}
-            className="w-full h-13 gap-x-4 hover:brightness-90 cursor-pointer text-base border-2 border-[#222] font-medium rounded-lg"
+            className="w-full dark:text-white/60! h-13 gap-x-4 hover:brightness-90 cursor-pointer text-base border-2 border-[#222] dark:border-border font-medium rounded-lg"
           >
             <div className="flex-none scale-125">
               <GoogleIcon />
@@ -48,22 +48,22 @@ export function SignIn() {
         </div>
       </div>
 
-      <div className="col-span-1 flex items-center justify-center overflow-hidden relative h-full bg-gray-50 border-l-gray-100 border-l-3">
-        <div className="w-96 h-96 -top-56 absolute -left-20 rounded-full border-3 border-gray-200" />
+      <div className="col-span-1 flex items-center justify-center overflow-hidden relative h-full bg-gray-50  dark:bg-secondary-background dark:border-l-0 border-l-gray-100 border-l-3">
+        <div className="w-96 h-96 -top-56 absolute -left-20 rounded-full border-3 dark:border-gray-50/10 border-gray-200" />
         <div className="w-96 h-96 -top-64 absolute left-0 rounded-full border-3 border-primary" />
         <div className="w-80 h-80 -top-56 absolute left-16 rounded-full border-3 border-primary" />
 
-        <div className="w-96 h-96 -bottom-56 absolute -right-20 rounded-full border-3 border-gray-200" />
+        <div className="w-96 h-96 -bottom-56 absolute -right-20 rounded-full border-3 dark:border-gray-50/10 border-gray-200" />
         <div className="w-96 h-96 -bottom-64 absolute right-0 rounded-full border-3 border-primary" />
         <div className="w-80 h-80 -bottom-56 absolute right-16 rounded-full border-3 border-primary" />
 
         <div className="flex flex-col gap-y-6">
-          <h4 className="text-5xl leading-tight max-w-3xl text-gray-400">
+          <h4 className="text-5xl leading-tight max-w-3xl dark:text-white text-gray-400">
             Ajudamos a cuidar da sua saúde mental com a
             <span className="text-primary font-medium"> Aura.</span>
           </h4>
 
-          <p className="text-xl text-black/60 max-w-2xl">
+          <p className="text-xl dark:text-white/60 text-black/60 max-w-2xl">
             Obtenha apoio e diagnóstico antecipado com IA 24h por dia, e obtenha
             todos os recursos para cuidar de si.
           </p>

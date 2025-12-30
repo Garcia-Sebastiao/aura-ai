@@ -5,6 +5,7 @@ import { MessageSquare, Clock, TrashIcon } from "lucide-react";
 import type { ChatProps } from "@/types/chat.types";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ConfirmDialog } from "@/components/shared/modal/confirm-modal";
+import { limitStringWithDots } from "@/utils/limitStringsWithDots";
 
 export function ChatList() {
   const { user } = useAuthStore();
@@ -59,18 +60,18 @@ export function ChatList() {
         <Link
           to={`/chat/${chat?.id}`}
           key={chat?.id}
-          className="w-full relative flex items-center gap-x-3 p-3 rounded-xl hover:bg-primary/5 transition-all cursor-pointer group text-left border border-transparent hover:border-primary/10 group"
+          className="w-full relative flex items-center gap-x-3 p-3 rounded-xl  dark:hover:bg-white/10 hover:bg-primary/5 transition-all cursor-pointer group text-left dark:border-0 border border-transparent dark:hover:border-0 hover:border-primary/10 group"
         >
-          <div className="bg-primary/10 p-2.5 rounded-lg group-hover:bg-primary/20 transition-colors">
-            <MessageSquare className="w-4 h-4 text-primary" />
+          <div className="dark:bg-white/10 bg-primary/10 p-2.5 rounded-lg group-hover:bg-primary/20 transition-colors">
+            <MessageSquare className="w-4 h-4 dark:text-white text-primary" />
           </div>
 
           <div className="flex-1 overflow-hidden">
-            <p className="text-sm font-medium text-gray-700 truncate group-hover:text-primary transition-colors">
-              {chat.title || "Conversa sem título"}
+            <p className="text-sm font-medium dark:text-white text-gray-700 truncate group-hover:text-primary transition-colors">
+              {limitStringWithDots(chat.title, 20)|| "Conversa sem título"}
             </p>
 
-            <div className="flex items-center gap-x-1 text-[10px] text-gray-400 mt-1">
+            <div className="flex items-center gap-x-1 text-[10px] dark:text-white/60 text-gray-400 mt-1">
               <Clock className="w-3 h-3" />
               <span>
                 {chat.updatedAt?.seconds

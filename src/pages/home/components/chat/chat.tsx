@@ -56,7 +56,7 @@ export function ChatBody() {
         </div>
       </div>
 
-      <div className="p-6 bg-linear-to-t from-white via-white to-transparent">
+      <div className="p-6 dark:from-transparent dark:via-transparent bg-linear-to-t from-white via-white to-transparent">
         <div className="max-w-4xl mx-auto w-full">
           <ChatInput
             setIsTyping={setIsTyping}

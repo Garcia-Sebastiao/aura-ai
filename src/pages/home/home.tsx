@@ -6,15 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const navigate = useNavigate();
-
   return (
     <div className="w-full relative min-h-screen flex">
       <Sidebar />
 
       <div className="flex flex-col relative h-screen flex-1 py-6 gap-y-6 px-8">
-        <header className="w-full sticky flex pl-8 items-center justify-between">
+        <header className="w-full sticky flex items-center justify-between">
           <div className="flex items-center gap-x-2">
-            <h4 className="font-semibold text-xl text-gray-400">AuraChat</h4>
+            <h4 className="font-semibold text-xl dark:text-white text-gray-400">AuraChat</h4>
             <span className="py-1 px-3 text-sm border border-border rounded-md">
               Plus
             </span>

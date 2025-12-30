@@ -53,14 +53,14 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
               <div
                 className={`px-5 py-3 rounded-2xl text-[15px] leading-relaxed ${
                   isUser
-                    ? "bg-gray-100 text-gray-800 rounded-tr-none"
-                    : "bg-primary/5 text-gray-700 rounded-tl-none prose prose-slate max-w-none"
+                    ? "dark:bg-white/10 bg-gray-100 text-gray-800 rounded-tr-none"
+                    : "dark:bg-transparent dark:p-0! bg-primary/5 text-gray-700 rounded-tl-none prose prose-slate max-w-none"
                 }`}
               >
                 {isUser ? (
-                  <p className="whitespace-pre-wrap">{msg.text}</p>
+                  <p className="dark:text-white whitespace-pre-wrap">{msg.text}</p>
                 ) : (
-                  <div className="markdown-content prose prose-slate max-w-none">
+                  <div className="markdown-content dark:text-white prose prose-slate max-w-none">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {msg.text}
                     </ReactMarkdown>

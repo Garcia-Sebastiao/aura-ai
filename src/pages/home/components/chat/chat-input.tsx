@@ -65,11 +65,11 @@ const ChatInput = ({ chatId, history, setIsTyping }: ChatInputProps) => {
 
   return (
     <div className="w-full">
-      <div className="relative flex flex-col w-full bg-white border border-gray-200 rounded-[40px] shadow-sm p-4">
+      <div className="relative flex flex-col w-full dark:bg-white/10 bg-white dark:border-border border border-gray-200 rounded-[40px] shadow-sm p-4">
         <div className="flex items-start gap-2 px-2 pt-2">
           <Sparkles
             className={`w-5 h-5 mt-1 ${
-              isLoading ? "text-primary animate-pulse" : "text-gray-400"
+              isLoading ? "text-primary animate-pulse" : "text-gray-400 dark:text-white/60"
             }`}
           />
 
@@ -85,21 +85,22 @@ const ChatInput = ({ chatId, history, setIsTyping }: ChatInputProps) => {
               }
             }}
             placeholder="Como posso te ajudar hoje?"
-            className="w-full bg-transparent border-none focus:ring-0 text-gray-600 placeholder-gray-400 resize-none py-1 overflow-hidden"
+            className="w-full bg-transparent border-none focus:ring-0 dark:text-white text-gray-600 placeholder-gray-400 dark:placeholder-white/60 resize-none py-1 overflow-hidden"
             rows={1}
             disabled={isLoading}
           />
         </div>
 
         <div className="mt-4 flex items-center justify-between">
-          <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors opacity-50 cursor-not-allowed">
+          <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium dark:text-white text-gray-700 dark:bg-white/10 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors opacity-50 cursor-not-allowed">
             Select Source <ChevronDown className="w-5 h-5" />
           </button>
 
           <div className="flex items-center gap-2">
             <Button
               variant="ghost"
-              className="hidden md:flex items-center gap-2 px-4 py-2 text-gray-700 border border-gray-200 rounded-full"
+              disabled
+              className="hidden md:flex items-center gap-2 px-4 py-2 text-gray-700 border dark:border-border border-gray-200 rounded-full"
             >
               <Paperclip className="w-4 h-4 rotate-45" /> Attach
             </Button>
@@ -107,7 +108,7 @@ const ChatInput = ({ chatId, history, setIsTyping }: ChatInputProps) => {
             <Button
               onClick={onSend}
               disabled={isLoading || !message.trim()}
-              className="flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full hover:brightness-90 transition-colors ml-1 disabled:bg-gray-200"
+              className="flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full hover:brightness-90 transition-colors ml-1 dark:disabled:bg-white/10 disabled:bg-gray-200"
             >
               {isLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

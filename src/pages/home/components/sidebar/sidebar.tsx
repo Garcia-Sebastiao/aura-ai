@@ -1,25 +1,38 @@
 import { Avatar } from "@/components/shared/avatar";
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/auth.store";
-import { PenBoxIcon, SearchIcon, SparklesIcon, SunIcon } from "lucide-react";
+import {
+  MoonIcon,
+  PenBoxIcon,
+  SearchIcon,
+  SparklesIcon,
+  SunIcon,
+} from "lucide-react";
 import { ChatList } from "./chat-list";
 import { useNavigate } from "react-router-dom";
+import { useThemeStore } from "@/store/theme.store";
 
 export function Sidebar() {
   const { user } = useAuthStore();
+  const { theme, toggleTheme } = useThemeStore();
   const navigate = useNavigate();
 
   return (
     <div className="w-full max-w-80 h-screen sticky top-0 flex">
-      <div className="flex-1 max-w-20 flex justify-between flex-col bg-gray-100 items-center px-2 py-4">
+      <div className="flex-1 max-w-20 flex justify-between flex-col dark:bg-secondary-background bg-gray-100 items-center px-2 py-4">
         <img src="/logo.png" className="w-12 flex-none h-12" alt="Aura logo" />
 
         <div className="flex flex-col gap-y-4 items-center w-full">
           <Button
             variant="ghost"
-            className="w-12 h-12 border bg-white border-border rounded-full flex items"
+            onClick={toggleTheme}
+            className="w-12 h-12 border dark:border-0 dark:bg-white/5 bg-background border-border rounded-full flex items-center justify-center hover:bg-accent transition-all"
           >
-            <SunIcon className="w-8 h-8 text-primary" />
+            {theme === "dark" ? (
+              <SunIcon className="w-6 h-6 text-yellow-400" />
+            ) : (
+              <MoonIcon className="w-6 h-6 text-slate-700" />
+            )}
           </Button>
           <Avatar src={user?.avatar} name={user?.name as string} />
         </div>
@@ -43,7 +56,7 @@ export function Sidebar() {
         </div>
 
         <div className="flex-1 flex flex-col gap-y-4 w-full">
-          <h4 className="text-black font-medium">Conversas</h4>
+          <h4 className="dark:text-white text-black font-medium">Conversas</h4>
           <ChatList />
         </div>
 
