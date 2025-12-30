@@ -9,16 +9,17 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { handleSendMessage } from "@/services/chat.service";
-import { startNewChat } from "@/lib/firestore"; // Importar função de criação
+import { startNewChat } from "@/lib/firestore";
 import { useAuthStore } from "@/store/auth.store";
 import type { MessageProps } from "@/types/chat.types";
 
 interface ChatInputProps {
-  chatId?: string; // Tornar opcional
+  chatId?: string;
   history: MessageProps[];
+  setIsTyping: (value: boolean) => void;
 }
 
-const ChatInput = ({ chatId, history }: ChatInputProps) => {
+const ChatInput = ({ chatId, history, setIsTyping }: ChatInputProps) => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -30,25 +31,19 @@ const ChatInput = ({ chatId, history }: ChatInputProps) => {
 
     try {
       setIsLoading(true);
+      setIsTyping(true);
       const currentMessage = message;
       setMessage("");
       if (textareaRef.current) textareaRef.current.style.height = "auto";
 
       let activeId = chatId;
 
-      // SE NÃO EXISTE CHAT: Cria um novo e navega
       if (!activeId) {
-        // startNewChat já salva a 1ª msg do usuário e retorna o ID
         activeId = await startNewChat(user.id, currentMessage);
-
-        // Navega para a nova rota para carregar o histórico real-time
         navigate(`/chat/${activeId}`);
 
-        // Chamamos a resposta da Aura para esse novo ID
-        // Passamos history vazio [] pois é o primeiro chat
         await handleSendMessage(activeId, currentMessage, [], true);
       } else {
-        // CHAT JÁ EXISTE: Segue o fluxo normal
         await handleSendMessage(activeId, currentMessage, history);
       }
     } catch (error) {
@@ -56,6 +51,7 @@ const ChatInput = ({ chatId, history }: ChatInputProps) => {
       alert("Erro ao iniciar conversa.");
     } finally {
       setIsLoading(false);
+      setIsTyping(false);
     }
   };
 

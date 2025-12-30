@@ -13,7 +13,7 @@ export const handleSendMessage = async (
   chatId: string,
   text: string,
   history: MessageProps[],
-  onlyAura: boolean = false // Novo parâmetro
+  onlyAura: boolean = false 
 ) => {
   if (!onlyAura) {
     await addDoc(collection(db, "chats", chatId, "messages"), {

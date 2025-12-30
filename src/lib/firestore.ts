@@ -11,6 +11,7 @@ import {
   where,
   orderBy,
   onSnapshot,
+  deleteDoc,
 } from "firebase/firestore";
 
 export const syncUser = async (user: UserProps): Promise<void> => {
@@ -47,6 +48,11 @@ export const startNewChat = async (
   });
 
   return chatDoc.id;
+};
+
+export const deleteChat = async (chatId: string): Promise<void> => {
+  const chatRef = doc(db, "chats", chatId);
+  await deleteDoc(chatRef);
 };
 
 export const subscribeToUserChats = (

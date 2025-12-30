@@ -1,21 +1,25 @@
 import { useEffect, useRef } from "react";
 import type { MessageProps } from "@/types/chat.types";
-import { Sparkles } from "lucide-react";
-import ReactMarkdown from "react-markdown"; // Importar a lib
-import remarkGfm from "remark-gfm"; // Para tabelas e links
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Avatar } from "@/components/shared/avatar";
+import { useAuthStore } from "@/store/auth.store";
+import { TypingIndicator } from "@/components/shared/type-indicator";
 
 interface ChatMessagesProps {
   messages: MessageProps[];
+  isTyping?: boolean;
 }
 
-export function ChatMessages({ messages }: ChatMessagesProps) {
+export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { user } = useAuthStore();
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]);
+  }, [messages, isTyping]);
 
   return (
     <div className="flex flex-col gap-y-8 pb-10">
@@ -32,37 +36,30 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
             }`}
           >
             <div
-              className={`flex gap-x-4 max-w-[85%] ${
+              className={`flex gap-x-4 max-w-[95%] ${
                 isUser ? "flex-row-reverse" : "flex-row"
               }`}
             >
-              {/* Avatar */}
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm ${
-                  isUser ? "bg-gray-200 text-gray-600" : "bg-primary text-white"
-                }`}
-              >
-                {isUser ? (
-                  <span className="text-xs font-bold uppercase">
-                    {msg.sender[0]}
-                  </span>
-                ) : (
-                  <Sparkles className="w-4 h-4" />
-                )}
-              </div>
+              {isUser ? (
+                <Avatar
+                  name={user?.name as string}
+                  src={user?.avatar}
+                  className="w-8 h-8"
+                />
+              ) : (
+                <img src="/logo.png" className="w-8 h-8" alt="Aura Ai" />
+              )}
 
-              {/* Bolha de Resposta */}
               <div
-                className={`px-5 py-3 rounded-2xl text-[15px] leading-relaxed shadow-sm ${
+                className={`px-5 py-3 rounded-2xl text-[15px] leading-relaxed ${
                   isUser
                     ? "bg-gray-100 text-gray-800 rounded-tr-none"
-                    : "bg-white border border-gray-100 text-gray-700 rounded-tl-none prose prose-slate max-w-none"
+                    : "bg-primary/5 text-gray-700 rounded-tl-none prose prose-slate max-w-none"
                 }`}
               >
                 {isUser ? (
                   <p className="whitespace-pre-wrap">{msg.text}</p>
                 ) : (
-                  // A MÁGICA ACONTECE AQUI
                   <div className="markdown-content prose prose-slate max-w-none">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {msg.text}
@@ -74,6 +71,8 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
           </div>
         );
       })}
+
+      {isTyping && <TypingIndicator />}
       <div ref={scrollRef} />
     </div>
   );

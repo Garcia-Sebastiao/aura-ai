@@ -11,6 +11,7 @@ export function ChatBody() {
   const { user } = useAuthStore();
   const { id: chatId } = useParams<{ id: string }>();
   const [messages, setMessages] = useState<MessageProps[]>([]);
+  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   useEffect(() => {
     if (!chatId) return;
@@ -50,14 +51,18 @@ export function ChatBody() {
               </h1>
             </div>
           ) : (
-            <ChatMessages messages={messages} />
+            <ChatMessages isTyping={isTyping} messages={messages} />
           )}
         </div>
       </div>
 
       <div className="p-6 bg-linear-to-t from-white via-white to-transparent">
         <div className="max-w-4xl mx-auto w-full">
-          <ChatInput history={messages} chatId={chatId as string} />
+          <ChatInput
+            setIsTyping={setIsTyping}
+            history={messages}
+            chatId={chatId as string}
+          />
           <p className="text-sm text-center text-gray-400 mt-4">
             A Aura pode cometer erros. Considere verificar informações
             importantes.
