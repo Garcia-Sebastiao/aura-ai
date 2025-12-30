@@ -67,7 +67,7 @@ export function SignIn() {
             <a
               target="_blank"
               className="underline text-primary"
-              href="https://github.com/Garcia-Sebastiao"
+              href="https://www.linkedin.com/in/garcia-sebastiao"
             >
               Garcia Sebastião
             </a>

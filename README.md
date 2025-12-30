@@ -1,73 +1,104 @@
-# React + TypeScript + Vite
+# 🌟 Aura AI — Assistente de Primeiros Socorros Emocionais
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **Aura** é uma assistente virtual de saúde mental focada em **Primeiros Socorros Psicológicos (PSP)**.  
+O objetivo do projeto é oferecer **acolhimento emocional imediato**, validação e técnicas de estabilização, sem realizar diagnósticos clínicos.
 
-Currently, two official plugins are available:
+> ⚠️ **Aviso Importante:**  
+> Este projeto **não substitui** acompanhamento psicológico ou psiquiátrico profissional.  
+> A Aura atua exclusivamente como **suporte inicial**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Status do Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Status:** Beta (Produção)
+- **Deploy:** Vercel
+- **Link:** 👉 https://aura-ai-beta-blue.vercel.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧠 Visão Geral
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+A Aura foi concebida para atuar na **“zona zero” do sofrimento emocional**, seguindo protocolos internacionais de **Primeiros Socorros Psicológicos (PSP)**, estruturados nos pilares:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Ver** — identificar sinais emocionais
+- **Ouvir** — escuta empática e validação
+- **Ligar** — incentivo a redes de apoio e recursos externos
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+A IA é cuidadosamente configurada para **não diagnosticar**, **não romantizar sofrimento** e **priorizar a segurança do utilizador**.
+
+---
+
+## ✨ Diferenciais do Projeto
+
+- 🧩 **Arquitetura orientada a produto**
+- 🧠 **Prompt Engineering avançado**, focado em segurança emocional
+- 🚨 **Detecção de termos de risco** com acionamento de fluxos de emergência
+- 🎯 **UX acolhedora**, com animações suaves e linguagem empática
+- 🔒 **Boas práticas de segurança e privacidade**
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend & Core
+- **React.js + Vite** — build rápido e eficiente
+- **TypeScript** — tipagem estática e código robusto
+- **Tailwind CSS** — estilização utilitária e responsiva
+- **Shadcn/UI** — componentes acessíveis e modernos
+- **Framer Motion** — animações suaves e humanizadas
+
+### Inteligência Artificial
+- **Google Gemini 3 Flash API**
+- **System Prompt Customizado**
+  - Baixa temperatura
+  - Restrições de diagnóstico
+  - Foco em estabilização emocional
+  - Técnicas guiadas (respiração, grounding, 5-4-3-2-1)
+
+### Backend & Persistência
+- **Firebase Authentication**
+  - Login social com Google
+- **Cloud Firestore**
+  - Persistência de perfil do utilizador
+- **LocalStorage**
+  - Cache e gestão de sessão
+
+---
+
+## 🔐 Funcionalidades Principais
+
+- [x] Autenticação social via Google
+- [x] Chat em tempo real com IA
+- [x] Sincronização de perfil (nome, email, avatar)
+- [x] Modo de segurança emocional
+- [x] Detecção de termos sensíveis
+- [x] Design responsivo (mobile e desktop)
+- [x] Interface acessível e acolhedora
+
+---
+
+## 🚀 Executando o Projeto Localmente
+
+### 1️⃣ Clonar o repositório
+```bash
+git clone https://github.com/Garcia-Sebastiao/aura-ai.git 
+cd aura-ai 
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Desenvolvedor
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Garcia Sebastião
+Frontend Specialist • +5 anos de experiência
+Atualmente Analista Desenvolvedor na TIS (Angola), com foco em:
+- [x] Sistemas de alta escala
+- [x] Interfaces centradas no utilizador
+- [x] Engenharia de produto e UX
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Links
+LinkedIn: https://www.linkedin.com/in/garciasebastiao
+GitHub: https://github.com/garcia-sebastiao
+
+### Licença
+Este projeto está sob a licença MIT.
+Consulte o ficheiro LICENSE para mais detalhes.
