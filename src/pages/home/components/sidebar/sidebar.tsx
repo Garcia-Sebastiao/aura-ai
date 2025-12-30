@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/auth.store";
 import { PenBoxIcon, SearchIcon, SparklesIcon, SunIcon } from "lucide-react";
 import { ChatList } from "./chat-list";
+import { useNavigate } from "react-router-dom";
 
 export function Sidebar() {
   const { user } = useAuthStore();
+  const navigate = useNavigate();
 
   return (
     <div className="w-full max-w-80 h-screen sticky top-0 flex">
@@ -30,7 +32,10 @@ export function Sidebar() {
             <SearchIcon className="h-5 text-black/60 w-5" />
           </div>
 
-          <Button className="w-full p-3! [&>svg]:size-4! font-medium rounded-lg">
+          <Button
+            onClick={() => navigate("/chat")}
+            className="w-full p-3! [&>svg]:size-4! font-medium rounded-lg"
+          >
             <PenBoxIcon className="w-4 h-4" />
             Novo chat
             <SparklesIcon className="w-4 h-4" />

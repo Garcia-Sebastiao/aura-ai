@@ -3,6 +3,7 @@ import { useAuthStore } from "@/store/auth.store";
 import { subscribeToUserChats } from "@/lib/firestore";
 import { MessageSquare, Clock } from "lucide-react";
 import type { ChatProps } from "@/types/chat.types";
+import { Link } from "react-router-dom";
 
 export function ChatList() {
   const { user } = useAuthStore();
@@ -36,10 +37,11 @@ export function ChatList() {
   }
 
   return (
-    <div className="w-full flex flex-col gap-y-2 p-2">
+    <div className="w-full flex flex-col gap-y-2">
       {chats?.map((chat) => (
-        <button
-          key={chat.id}
+        <Link
+          to={`/chat/${chat?.id}`}
+          key={chat?.id}
           className="w-full flex items-center gap-x-3 p-3 rounded-xl hover:bg-primary/5 transition-all cursor-pointer group text-left border border-transparent hover:border-primary/10"
         >
           <div className="bg-primary/10 p-2.5 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -62,7 +64,7 @@ export function ChatList() {
               </span>
             </div>
           </div>
-        </button>
+        </Link>
       ))}
     </div>
   );
