@@ -61,6 +61,17 @@ export function SignIn() {
             </div>
             Continuar com o google
           </Button>
+
+          <span className="self-center text-base">
+            Desenvolvido por{" "}
+            <a
+              target="_blank"
+              className="underline text-primary"
+              href="https://github.com/Garcia-Sebastiao"
+            >
+              Garcia Sebastião
+            </a>
+          </span>
         </div>
       </div>
 

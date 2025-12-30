@@ -67,7 +67,17 @@ export function ChatBody() {
           />
           <p className="text-sm text-center text-gray-400 mt-4">
             A Aura pode cometer erros. Considere verificar informações
-            importantes.
+            importantes. <br />
+            <span className="self-center">
+              Desenvolvido por{" "}
+              <a
+                target="_blank"
+                className="underline text-primary"
+                href="https://github.com/Garcia-Sebastiao"
+              >
+                Garcia Sebastião
+              </a>
+            </span>
           </p>
         </div>
       </div>
