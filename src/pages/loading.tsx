@@ -1,6 +1,6 @@
 export function Loading() {
   return (
-    <div className="w-full h-screen justify-center flex items-center">
+    <div className="w-full h-dvh justify-center flex items-center">
       <img
         src="/logo.png"
         alt="Aura Logo"

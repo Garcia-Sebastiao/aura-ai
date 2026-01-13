@@ -18,7 +18,7 @@ export function SignIn() {
   }, [user, navigate]);
 
   return (
-    <div className="w-full grid grid-cols-1 lg:grid-cols-2 h-screen">
+    <div className="w-full grid grid-cols-1 lg:grid-cols-2 h-dvh">
       <div className="col-span-1 px-6 flex-col flex justify-center items-center h-full">
         <div className="w-full max-w-lg flex flex-col gap-y-6 items-start">
           <h4 className="text-3xl font-semibold ">Iniciar Sessão</h4>

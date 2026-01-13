@@ -9,10 +9,10 @@ export function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className="w-full relative min-h-screen flex">
+    <div className="w-full relative min-h-dvh flex">
       <Sidebar onClose={() => setIsOpen(false)} isOpen={isOpen} />
 
-      <div className="flex flex-col relative h-screen flex-1 py-6 gap-y-6 px-4 lg:px-8">
+      <div className="flex flex-col relative h-dvh flex-1 py-6 gap-y-6 px-4 lg:px-8">
         <header className="w-full sticky flex items-center justify-between">
           <div className="flex items-center gap-x-2">
             <button
