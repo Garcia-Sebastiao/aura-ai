@@ -14,7 +14,7 @@ export function ChatList({ onClose }: { onClose: () => void }) {
   const { id: activeChatId } = useParams();
   const navigate = useNavigate();
   const [chatToDelete, setChatToDelete] = useState<string | undefined>(
-    undefined
+    undefined,
   );
 
   const handleDelete = async (chatId: string) => {
@@ -55,50 +55,52 @@ export function ChatList({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="w-full flex flex-col gap-y-2">
-      {chats?.map((chat) => (
-        <Link
-          onClick={() => {
-            onClose();
-          }}
-          to={`/chat/${chat?.id}`}
-          key={chat?.id}
-          className="w-full relative flex items-center gap-x-3 p-3 rounded-xl  dark:hover:bg-white/10 hover:bg-primary/5 transition-all cursor-pointer group text-left dark:border-0 border border-transparent dark:hover:border-0 hover:border-primary/10 group"
-        >
-          <div className="dark:bg-white/10 bg-primary/10 p-2.5 rounded-lg group-hover:bg-primary/20 transition-colors">
-            <MessageSquare className="w-4 h-4 dark:text-white text-primary" />
-          </div>
-
-          <div className="flex-1 overflow-hidden">
-            <p className="text-sm font-medium dark:text-white text-gray-700 truncate group-hover:text-primary transition-colors">
-              {limitStringWithDots(chat.title, 20) || "Conversa sem título"}
-            </p>
-
-            <div className="flex items-center gap-x-1 text-[10px] dark:text-white/60 text-gray-400 mt-1">
-              <Clock className="w-3 h-3" />
-              <span>
-                {chat.updatedAt?.seconds
-                  ? new Date(chat.updatedAt.seconds * 1000).toLocaleDateString(
-                      "pt-AO"
-                    )
-                  : "Agora mesmo"}
-              </span>
+    <>
+      <div className="w-full flex overflow-y-auto flex-col gap-y-2">
+        {chats?.map((chat) => (
+          <Link
+            onClick={() => {
+              onClose();
+            }}
+            to={`/chat/${chat?.id}`}
+            key={chat?.id}
+            className="w-full relative flex items-center gap-x-3 p-3 rounded-xl  dark:hover:bg-white/10 hover:bg-primary/5 transition-all cursor-pointer group text-left dark:border-0 border border-transparent dark:hover:border-0 hover:border-primary/10 group"
+          >
+            <div className="dark:bg-white/10 bg-primary/10 p-2.5 rounded-lg group-hover:bg-primary/20 transition-colors">
+              <MessageSquare className="w-4 h-4 dark:text-white text-primary" />
             </div>
-          </div>
 
-          <button className="absolute transition-all cursor-pointer hover:brightness-90 bottom-2 opacity-0 group-hover:opacity-100 right-2">
-            <TrashIcon
-              onClick={(e) => {
-                onClose();
-                e.preventDefault();
-                e.stopPropagation();
-                setChatToDelete(chat?.id);
-              }}
-              className="w-4 h-4 text-red-500"
-            />
-          </button>
-        </Link>
-      ))}
+            <div className="flex-1 overflow-hidden">
+              <p className="text-sm font-medium dark:text-white text-gray-700 truncate group-hover:text-primary transition-colors">
+                {limitStringWithDots(chat.title, 20) || "Conversa sem título"}
+              </p>
+
+              <div className="flex items-center gap-x-1 text-[10px] dark:text-white/60 text-gray-400 mt-1">
+                <Clock className="w-3 h-3" />
+                <span>
+                  {chat.updatedAt?.seconds
+                    ? new Date(
+                        chat.updatedAt.seconds * 1000,
+                      ).toLocaleDateString("pt-AO")
+                    : "Agora mesmo"}
+                </span>
+              </div>
+            </div>
+
+            <button className="absolute transition-all cursor-pointer hover:brightness-90 bottom-2 opacity-0 group-hover:opacity-100 right-2">
+              <TrashIcon
+                onClick={(e) => {
+                  onClose();
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setChatToDelete(chat?.id);
+                }}
+                className="w-4 h-4 text-red-500"
+              />
+            </button>
+          </Link>
+        ))}
+      </div>
 
       {chatToDelete && (
         <ConfirmDialog
@@ -111,6 +113,6 @@ export function ChatList({ onClose }: { onClose: () => void }) {
           }}
         />
       )}
-    </div>
+    </>
   );
 }
