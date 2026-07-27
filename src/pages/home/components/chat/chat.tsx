@@ -65,7 +65,7 @@ export function ChatBody() {
             history={messages}
             chatId={chatId as string}
           />
-          <p className="text-sm text-center text-gray-400 mt-4">
+          <p className="text-sm hidden lg:block text-center text-gray-400 mt-4">
             A Aura pode cometer erros. Considere verificar informações
             importantes. <br />
             <span className="self-center">
