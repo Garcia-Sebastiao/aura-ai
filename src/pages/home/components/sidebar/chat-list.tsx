@@ -56,7 +56,7 @@ export function ChatList({ onClose }: { onClose: () => void }) {
 
   return (
     <>
-      <div className="w-full flex overflow-y-auto flex-col gap-y-2">
+      <div className="w-full flex overflow-y-auto h-[65dvh] flex-col gap-y-2">
         {chats?.map((chat) => (
           <Link
             onClick={() => {

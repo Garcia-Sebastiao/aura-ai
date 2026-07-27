@@ -22,13 +22,14 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
   }, [messages, isTyping]);
 
   return (
-    <div className="flex flex-col gap-y-8 pb-10">
+    <div className="flex flex-col relative gap-y-8 pb-10">
       {messages.map((msg, index) => {
         const isUser = msg.sender === "user";
 
         return (
           <div
             key={msg.id || index}
+            // ref={index + 1 == messages?.length ? scrollRef : null}
             className={`flex w-full ${
               isUser
                 ? "justify-end"
@@ -47,18 +48,24 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
                   className="w-8 h-8 hidden lg:block"
                 />
               ) : (
-                <img src="/logo.png" className="w-8 h-8 hidden lg:block" alt="Aura Ai" />
+                <img
+                  src="/logo.png"
+                  className="w-8 h-8 hidden lg:block"
+                  alt="Aura Ai"
+                />
               )}
 
               <div
                 className={`px-5 py-3 rounded-2xl text-[15px] leading-relaxed ${
                   isUser
                     ? "dark:bg-white/10 bg-gray-100 text-gray-800 rounded-tr-none"
-                    : "dark:bg-transparent dark:p-0! bg-primary/5 text-gray-700 rounded-tl-none prose prose-slate max-w-none"
+                    : "p-0! text-gray-900 rounded-tl-none prose prose-slate max-w-none"
                 }`}
               >
                 {isUser ? (
-                  <p className="dark:text-white whitespace-pre-wrap">{msg.text}</p>
+                  <p className="dark:text-white whitespace-pre-wrap">
+                    {msg.text}
+                  </p>
                 ) : (
                   <div className="markdown-content dark:text-white prose prose-slate max-w-none">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -73,7 +80,6 @@ export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
       })}
 
       {isTyping && <TypingIndicator />}
-      <div ref={scrollRef} />
     </div>
   );
 }

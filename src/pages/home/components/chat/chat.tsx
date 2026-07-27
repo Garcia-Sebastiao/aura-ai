@@ -29,7 +29,7 @@ export function ChatBody() {
   return (
     <div
       className={cn(
-        "w-full flex flex-col flex-1 h-full overflow-hidden",
+        "w-full flex flex-col px-4 lg:px-0 lg:pt-6 pb-32 relative flex-1 h-full overflow-hidden",
         messages?.length == 0 && "justify-center"
       )}
     >
@@ -44,7 +44,7 @@ export function ChatBody() {
         <div className="max-w-4xl mx-auto w-full">
           {messages.length === 0 && !chatId ? (
             <div className="h-full flex flex-col items-center">
-              <h1 className="text-2xl pt-40 lg:pt-0 lg:text-5xl text-center pb-6 text-gray-400 max-w-3xl leading-normal lg:leading-tight">
+              <h1 className="text-2xl pt-40 lg:pt-0 lg:pb-20 lg:text-5xl text-center pb-6 text-gray-400 max-w-3xl leading-normal lg:leading-tight">
                 Olá{" "}
                 <span className="text-primary font-medium">
                   {user?.name?.split(" ")[0]}
@@ -58,7 +58,7 @@ export function ChatBody() {
         </div>
       </div>
 
-      <div className="lg:p-6 dark:from-transparent dark:via-transparent bg-linear-to-t from-white via-white to-transparent">
+      <div className="px-4 lg:px-6 lg:p-6 absolute bottom-0 left-0 w-full dark:from-transparent dark:via-transparent dark:bg-background bg-linear-to-t from-white via-white to-transparent">
         <div className="max-w-4xl mx-auto w-full">
           <ChatInput
             setIsTyping={setIsTyping}
