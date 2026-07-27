@@ -29,7 +29,7 @@ export function ChatBody() {
   return (
     <div
       className={cn(
-        "w-full flex flex-col px-4 lg:px-0 lg:pt-6 pb-32 relative flex-1 h-full overflow-hidden",
+        "w-full flex flex-col px-4 lg:px-0 lg:pt-6 pb-16 lg:pb-32 relative flex-1 h-full overflow-hidden",
         messages?.length == 0 && "justify-center"
       )}
     >
